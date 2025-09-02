@@ -1,0 +1,50 @@
+# Configuration pour Athena SQL Executor
+# =====================================
+
+# Région AWS où se trouve votre instance Athena
+region = "eu-west-3"
+
+# Emplacement S3 pour stocker les résultats des requêtes
+# Doit être un bucket S3 accessible par Athena
+output_location = "s3://perso-nta/tpcds_/query-results"
+# output_location = "s3://lf-workshop-118243050178/athena-results/"
+
+# Workgroup Athena à utiliser
+# Utilisez "primary" pour le workgroup par défaut
+workgroup = "primary"
+
+# Base de données Athena par défaut
+# database = "default"
+# database = "tpcds_db_parquet"
+database = "tpcds_db"
+
+# Configuration de l'authentification
+[auth]
+# Mode d'authentification : "aws_profile" ou "user_password"
+mode = "aws_profile"
+
+# Nom du profil AWS (utilisé avec mode = "aws_profile")
+profile = "archsolmmh@ADFS-ArchsolAdmin"
+
+# Configuration alternative pour l'authentification par utilisateur/mot de passe
+# Décommentez et modifiez ces lignes pour utiliser ce mode :
+# mode = "user_password"
+# user = "your_username"
+# password = "your_password"
+
+# Configuration SSL (optionnelle)
+[ssl]
+# Désactiver la vérification des certificats (DÉCONSEILLÉ en production)
+# Mettre à true uniquement pour le développement/test
+disable_cert_checking = false
+
+# Configuration du logging (optionnelle)
+[logging]
+# Niveau de log : DEBUG, INFO, WARN, ERROR
+level = "INFO"
+
+# Activer les logs dans un fichier
+file_logging = true
+
+# Chemin du fichier de log
+log_file = "logs/athena-executor.log"
